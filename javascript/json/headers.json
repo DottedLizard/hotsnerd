@@ -1,0 +1,14 @@
+[
+  { "Hero": "Hero" },
+  { "DPS": "DPS" },
+  { "AA_Dmg": "AA Dmg" },
+  { "AA_Speed": "AA Speed" },
+  { "AA_Range": "AA Range" },
+  { "HP": "HP" },
+  { "HP_Regen": "HP Regen" },
+  { "Mana": "Mana" },
+  { "Mana_Regen": "Mana Regen" },
+  { "Physical_Armor": "Phys. Armor" },
+  { "Spell_Armor": "Spell Armor" },
+  { "Move_Speed": "Move Speed" }
+]
