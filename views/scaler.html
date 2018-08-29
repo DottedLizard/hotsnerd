@@ -1,0 +1,7 @@
+<p class="bold">Select hero level:</p>
+<select name="select-level" id="select-level"
+  ng-controller="ScalerCtrl as scaler"
+  ng-model="levelSelection"
+  ng-options="l.name for l in levels track by l.id"
+  ng-change="scaler.scaleAttrTable()">
+</select>

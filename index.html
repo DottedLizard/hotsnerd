@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>HOTS Nerd</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Heroes of the Storm hero stats at a glance!" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="stylesheets/font/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="stylesheets/hotsnerd.css" />
+    <script src="javascript/jquery-3.1.1.min.js"></script>
+    <script src="javascript/angular.min.js"></script>
+    <script src="javascript/app.js"></script>
+    <script src="javascript/services/utilities.js"></script>
+    <script src="javascript/services/dataManager.js"></script>
+    <script src="javascript/controllers/patch.js"></script>
+    <script src="javascript/controllers/scaler.js"></script>
+    <script src="javascript/controllers/attrTable.js"></script>
+    <script src="javascript/controllers/roleFilter.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-101722794-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body ng-app="HotSNerdApp">
+    <header>
+      <img src="images/hotsnerd.png" />
+    </header>
+    <main>
+      <section id="intro">
+        <p>Welcome to HOTS Nerd - Heroes of the Storm hero stats at a glance!</p>
+        <p>Looking for buffs and nerfs to base stats in the lastest patch?  Buffs are in
+          <span class="buff">green</span> in the table below, and nerfs are in
+          <span class="nerf">orange</span>.  Previous patch statistics are in
+          <span class="strike">strikethrough</span>.</p>
+        <p><strong>Note:</strong> There may not have been any buffs or nerfs to hero base stats in the latest patch.</p>
+        <div ng-include="'views/patch.html'" ng-controller="AttrTableCtrl as attrTable"></div>
+      </section>
+      <section id="filters">
+        <div ng-include="'views/scaler.html'" id="scaler" class="hidden"></div>
+        <div ng-include="'views/roleFilter.html'" id="role_filters" class="hidden" ng-controller="RoleFilterCtrl as roleFilter"></div>
+      </section>
+      <section id="content">
+        <table class="table-striped" id="table" ng-include="'views/attrTable.html'" ng-controller="AttrTableCtrl as attrTable">
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

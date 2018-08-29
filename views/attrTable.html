@@ -1,0 +1,37 @@
+<thead>
+  <tr>
+    <th class="col-lg" ng-repeat="attr in attrTable.heroHeader">
+      <a class="sort" ng-repeat="(attrData, attrName) in attr" data-sort={{attrData}} ng-click="attrTable.sortTable($event)">
+        {{attrName}}
+        <i class="fa fa-sort"></i>
+        <i class="fa fa-sort-asc hidden"></i>
+        <i class="fa fa-sort-desc hidden"></i>
+      </a>
+    </th>
+    <th class="col-sm" ng-repeat="attr in attrTable.attrHeaders">
+      <a class="sort" ng-repeat="(attrData, attrName) in attr" data-sort={{attrData}} ng-click="attrTable.sortTable($event)">
+        {{attrName}}
+        <i class="fa fa-sort"></i>
+        <i class="fa fa-sort-asc hidden"></i>
+        <i class="fa fa-sort-desc hidden"></i>
+      </a>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat="row in attrTable.getData()" ng-if="row['Visible']" data-role="{{row['Role']}}">
+    <td class="col-lg">
+      <img ng-src="images/{{row['Image']}}.png" />
+      <span class="hero_name">{{row[attrTable.heroHeaderKey]}}</span>
+    </td>
+    <td class="col-sm" ng-repeat="key in attrTable.attrHeaderKeys">
+      <span ng-if="(row[key] !== row['Prior_' + key]) && (row['Prior_' + key] !== 'N/A')" class="strike">
+        {{row["Prior_" + key]}}
+      </span>
+      <span ng-if="(row[key] !== row['Prior_' + key]) && (row['Prior_' + key] !== 'N/A')">&nbsp;</span>
+      <span ng-class="{'buff': attrTable.sfgt(row[key], row['Prior_' + key]), 'nerf': attrTable.sfgt(row['Prior_' + key], row[key]), 'new': row['Prior_' + key] === 'N/A'}">
+        {{row[key]}}<span ng-if="(row[key] !== 'N/A') && ((key === 'HP_Regen') || (key === 'Mana_Regen'))">%</span>
+      </span>
+    </td>
+  </tr>
+</tbody>
